@@ -2,11 +2,16 @@ import CategoryCard from "../CategoryCard";
 import PropTypes from "prop-types";
 import { Wrapper } from "./styles";
 
-function CategoriesList({ data }) {
+function CategoriesList({ data, onAddTransaction, date }) {
   return (
     <Wrapper>
-      {data.map(({ id, ...data }) => (
-        <CategoryCard key={id} {...data} />
+      {data.map((category) => (
+        <CategoryCard
+          key={category.id}
+          category={category}
+          onAddTransaction={onAddTransaction}
+          date={date}
+        />
       ))}
     </Wrapper>
   );

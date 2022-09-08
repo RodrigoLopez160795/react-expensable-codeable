@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   max-width: 200px;
   /* min-width: 200px; */
   background-color: ${colors.white};
+  cursor: pointer;
 `;
 
 export const CategoryName = styled.p`

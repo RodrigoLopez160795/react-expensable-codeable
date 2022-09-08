@@ -87,7 +87,8 @@ function Button({ type = "digit", value, onClick }) {
   );
 }
 
-function Calculator({ category }) {
+function Calculator({ category, onClose, onAddTransaction, date }) {
+  console.log(date);
   const [prevNumber, setPrevNumber] = useState("");
   const [operant, setOperant] = useState("");
   const [currentNumber, setCurrentNumber] = useState("0");
@@ -131,6 +132,24 @@ function Calculator({ category }) {
       setCurrentNumber(calculate());
     } else {
       console.log(currentNumber);
+
+      let trxDate;
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = currentDate.getMonth();
+
+      if (currentYear === date.year && currentMonth === date.month) {
+        trxDate = currentDate.toISOString().slice(0, 10);
+      } else {
+        trxDate = new Date(date.year, date.month).toISOString().slice(0, 10);
+      }
+
+      onAddTransaction(category.id, {
+        amount: currentNumber,
+        notes: "",
+        date: trxDate,
+      });
+      onClose();
     }
   }
 
@@ -182,6 +201,7 @@ function Calculator({ category }) {
           <p className="title">Add expense to</p>
           <p className="category">{category.name}</p>
         </HeaderInfo>
+        <p onClick={onClose}>X</p>
       </Header>
       <Display>$ {display}</Display>
       <Button value="÷" type="operant" onClick={handleOperantClick} />

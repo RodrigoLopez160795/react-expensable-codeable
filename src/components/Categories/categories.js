@@ -40,6 +40,18 @@ function Categories({ date, type }) {
 
   const total = monthlyData.reduce((acc, cur) => acc + cur.amount, 0);
 
+  function handleAddTransaction(categoryId, data) {
+    const newCategories = [...categories];
+    const category = newCategories.find((cat) => cat.id === categoryId);
+
+    apiFetch(`categories/${category.id}/transactions`, {
+      body: data,
+    }).then((trx) => {
+      category.transactions.push(trx);
+      setCategories(newCategories);
+    });
+  }
+
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -65,7 +77,11 @@ function Categories({ date, type }) {
           Total {type === "expense" ? "Expenses" : "Income"}
         </TotalLabel>
       </TotalWrapper>
-      <CategoriesList data={monthlyData} />
+      <CategoriesList
+        data={monthlyData}
+        onAddTransaction={handleAddTransaction}
+        date={date}
+      />
     </Wrapper>
   );
 }
