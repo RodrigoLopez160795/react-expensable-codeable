@@ -12,14 +12,18 @@ const Title = styled.h1`
 
 function CategoriesPage() {
   let params = useParams();
+
+  //?year=2023&month=0
   const [searchParams, setSearchParams] = useSearchParams({
     year: getYear(new Date()),
     month: getMonth(new Date()),
   });
+
   const type = params.type || "expense";
+
   const date = {
-    year: +searchParams.get("year"),
-    month: +searchParams.get("month"),
+    year: Number(searchParams.get("year")),
+    month: Number(searchParams.get("month")),
   };
 
   const handleRightClick = () => {

@@ -37,6 +37,7 @@ function Categories({ date, type }) {
   const [error, setError] = useState(null);
 
   const monthlyData = getMonthlyData(categories, date, type);
+
   const total = monthlyData.reduce((acc, cur) => acc + cur.amount, 0);
 
   useEffect(() => {

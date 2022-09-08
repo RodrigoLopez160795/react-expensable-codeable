@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { colors, typography } from "../../styles";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // const currentStyles = (current) => {
 //   if (current) {
@@ -38,10 +38,9 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function SidebarNavItem({ name, icon, current, ...rest }) {
+function SidebarNavItem({ name, icon, ...rest }) {
   return (
     <StyledNavLink
-      current={current ? "true" : undefined}
       {...rest}
       style={({ isActive }) => {
         if (!isActive) return;
