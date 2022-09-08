@@ -3,7 +3,8 @@ import { format, getMonth, getYear } from "date-fns";
 import Categories from "../components/Categories/categories";
 import MonthPicker from "../components/MonthPicker";
 import { typography } from "../styles";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useLocalSearchParams } from "../hooks";
 
 const Title = styled.h1`
   ${typography.head.sm}
@@ -13,8 +14,7 @@ const Title = styled.h1`
 function CategoriesPage() {
   let params = useParams();
 
-  //?year=2023&month=0
-  const [searchParams, setSearchParams] = useSearchParams({
+  const [searchParams, setSearchParams] = useLocalSearchParams("initialDate", {
     year: getYear(new Date()),
     month: getMonth(new Date()),
   });
@@ -27,21 +27,17 @@ function CategoriesPage() {
   };
 
   const handleRightClick = () => {
-    const newMonth = date.month + 1;
-    if (newMonth > 11) {
-      setSearchParams({ year: date.year + 1, month: 0 });
-    } else {
-      setSearchParams({ year: date.year, month: newMonth });
-    }
+    const month = date.month + 1 > 11 ? 0 : date.month + 1;
+    const year = month === 0 ? date.year + 1 : date.year;
+
+    setSearchParams({ year, month });
   };
 
   const handleLeftClick = () => {
-    const newMonth = date.month - 1;
-    if (newMonth < 0) {
-      setSearchParams({ year: date.year - 1, month: 11 });
-    } else {
-      setSearchParams({ year: date.year, month: newMonth });
-    }
+    const month = date.month - 1 < 0 ? 11 : date.month - 1;
+    const year = month === 11 ? date.year - 1 : date.year;
+
+    setSearchParams({ year, month });
   };
 
   return (
