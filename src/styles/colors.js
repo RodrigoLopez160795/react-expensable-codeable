@@ -71,6 +71,21 @@ export const colors = {
     800: "#065F46",
     900: "#064E3B",
   },
+  orange:{
+    500:"#F97316",
+  },
+  teal:{
+    500:"#14B8A6"
+  },
+  cyan:{
+    500:"#06B6D4"
+  },
+  light_blue:{
+    500:"#0EA5E9"
+  },
+  blue:{
+    500:"#3B82F6"
+  },
   black: "#171717",
   white: "#FFFFFF",
 };

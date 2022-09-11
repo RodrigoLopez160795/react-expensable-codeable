@@ -15,14 +15,14 @@ export default {
       options: Object.keys(icons), // An array of serializable values
       mapping: icons, // Maps serializable option values to complex arg values
       control: {
-        type: "select", // Type 'select' is automatically inferred when 'options' is defined
+        typeButton: "select", // Type 'select' is automatically inferred when 'options' is defined
         labels: {
           RiUser3Fill: "User",
           RiHome2Fill: "Home",
         },
       },
     },
-    type: {
+    typeButton: {
       options: [undefined, "primary", "secondary"],
     },
     size: {
@@ -51,7 +51,7 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.args = {
   children: "Button",
-  type: "primary",
+  typeButton: "primary",
   size: undefined,
   icon: undefined,
   disabled: undefined,
@@ -61,7 +61,7 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   children: "Button",
-  type: "secondary",
+  typeButton: "secondary",
   size: undefined,
   icon: undefined,
   disabled: undefined,
@@ -71,7 +71,7 @@ Secondary.args = {
 export const Small = Template.bind({});
 Small.args = {
   children: "Button",
-  type: undefined,
+  typeButton: undefined,
   size: "sm",
   icon: undefined,
   disabled: undefined,
@@ -81,7 +81,7 @@ Small.args = {
 export const Large = Template.bind({});
 Large.args = {
   children: "Button",
-  type: undefined,
+  typeButton: undefined,
   size: "lg",
   icon: undefined,
   disabled: undefined,
@@ -91,7 +91,7 @@ Large.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: "Button",
-  type: undefined,
+  typeButton: undefined,
   size: undefined,
   icon: "RiUser3Fill",
   disabled: undefined,
@@ -101,7 +101,7 @@ WithIcon.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   children: "Button",
-  type: undefined,
+  typeButton: undefined,
   size: undefined,
   icon: undefined,
   disabled: true,
@@ -111,7 +111,7 @@ Disabled.args = {
 export const FullWidth = Template.bind({});
 FullWidth.args = {
   children: "Button",
-  type: undefined,
+  typeButton: undefined,
   size: undefined,
   icon: undefined,
   disabled: undefined,

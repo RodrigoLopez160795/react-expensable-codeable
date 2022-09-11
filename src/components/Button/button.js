@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { colors, typography } from "../../styles";
 
-function typeStyles(type) {
-  switch (type) {
+function typeStyles(typeButton) {
+  switch (typeButton) {
     case "primary":
       return `
         background-color: ${colors.pink[600]};
@@ -88,13 +88,13 @@ const StyledButton = styled.button`
     cursor: not-allowed;
   }
 
-  ${(props) => typeStyles(props.type)}
+  ${(props) => typeStyles(props.typeButton)}
   ${(props) => sizeStyles(props.size, props.rounded)}
 `;
 
 function Button({ icon, children, ...props }) {
   return (
-    <StyledButton {...props}>
+    <StyledButton  {...props} >
       {icon}
       {children}
     </StyledButton>
@@ -103,7 +103,7 @@ function Button({ icon, children, ...props }) {
 
 Button.propTypes = {
   disabled: PropTypes.bool,
-  type: PropTypes.oneOf(["primary", "secondary"]),
+  typeButton: PropTypes.oneOf(["primary", "secondary"]),
   size: PropTypes.oneOf(["sm", "lg"]),
   icon: PropTypes.element,
   isFullWidth: PropTypes.bool,

@@ -1,6 +1,7 @@
 import CategoryCard from "../CategoryCard";
 import PropTypes from "prop-types";
 import { Wrapper } from "./styles";
+import CategoryAdd from "../CategoryAdd";
 
 function CategoriesList({ data, onAddTransaction, date }) {
   return (
@@ -13,6 +14,7 @@ function CategoriesList({ data, onAddTransaction, date }) {
           date={date}
         />
       ))}
+      <CategoryAdd/>
     </Wrapper>
   );
 }
